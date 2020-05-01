@@ -1,0 +1,21 @@
+{
+    'name': 'Hospital Management',
+    'version': '1.0',
+    'summary': 'Hospital Management',
+    'description': 'Module for Managing the hospital',
+    'category': 'Extra Tools',
+    'author': 'AdesDev',
+    'sequence': '0',
+    'website': 'https://digitalfarmer.github.io',
+    'license': 'AGPL-3',
+    'depends': ['base','mail','stock'],
+    'data':[
+        'views/patient_view.xml',
+        'security/ir.model.access.csv',
+        'data/sequence.xml',
+    ],
+    'demo':[],
+    'installable': True,
+    'auto_install': False,
+    'application': True,
+}

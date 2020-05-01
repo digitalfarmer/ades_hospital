@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<!--    form for menu tree-->
+    <record id="patient_tree" model="ir.ui.view">
+        <field name="name">patient.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree string="Patient Tree">
+                <field name="name_seq"/>
+                <field name="patient_name"/>
+                <field name="patient_age"/>
+                <field name="notes"/>
+                <field name="image"/>
+            </tree>
+        </field>
+    </record>
+<!--    form for memnu patient-->
+    <record id="patient_form" model="ir.ui.view">
+        <field name="name">hospital.patient.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form string="Patients">
+                <sheet>
+                    <div class="oe_title">
+                        <hi >
+                            <field name="name_seq" readonly="1"/>
+                        </hi>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="patient_name"/>
+                            <field name="name"/>
+
+                        </group>
+                        <group>
+                            <field name="patient_age"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes"/>
+                        <field name="image"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh':'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+<!--    action for patient menu-->
+    <record id="action_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create Patient record by clicking button create
+                </p>
+        </field>
+    </record>
+
+<!--    menu item-->
+    <menuitem id="hospital_root" name="Hospital" sequence="0" web_icon="om_hospital,static/description/icon.png"/>
+    <menuitem id="hospital_patient" name="Patients" parent="hospital_root" action="action_patient"/>
+</odoo>
