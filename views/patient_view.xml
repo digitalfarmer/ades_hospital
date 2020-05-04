@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+<!--    odoo hospytal patient search-->
+    <record id="hospital_patient_search" model="ir.ui.view">
+       <field name="name">hospital.patient.search</field>
+       <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search string="Search Patient">
+                <field name="name" string="string" domain="['|',('patient_name','ilike',self),('name_seq','ilike',self)]"/>
+                <field name="name_seq"/>
+                <field name="patient_name"/>
+                <separator/>
+                <filter name="male" string="Male" domain="[('gender','=','male')]"/>
+                <filter name="female" string="female" domain="[('gender','=','female')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="gender" string="Gender" context="{'group_by':'gender'}"/>
+                </group>
+            </search>
+       </field>
+    </record>
 <!--    form for menu tree-->
     <record id="patient_tree" model="ir.ui.view">
         <field name="name">patient.tree</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <tree string="Patient Tree">
-                <field name="name_seq"/>
                 <field name="patient_name"/>
+                <field name="name_seq"/>
                 <field name="patient_age"/>
+                <field name="gender"/>
                 <field name="notes"/>
                 <field name="image"/>
             </tree>
@@ -22,9 +41,10 @@
             <form string="Patients">
                 <sheet>
                     <div class="oe_title">
-                        <hi >
+                        <h1>
+                            <field name="image" widget="image"/>
                             <field name="name_seq" readonly="1"/>
-                        </hi>
+                        </h1>
                     </div>
                     <group>
                         <group>
@@ -34,11 +54,12 @@
                         </group>
                         <group>
                             <field name="patient_age"/>
+                            <field name="gender"/>
                         </group>
                     </group>
                     <group>
                         <field name="notes"/>
-                        <field name="image"/>
+
                     </group>
                 </sheet>
                 <div class="oe_chatter">

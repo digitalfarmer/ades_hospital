@@ -6,13 +6,18 @@ class HospitalPatient(models.Model):
     _description = 'patient record'
     _rec_name = 'name_seq'
 
-    patient_name= fields.Char('Name', reuired=True)
+    patient_name= fields.Char('Pstient Name', reuired=True)
     patient_age= fields.Integer('Age')
-    notes= fields.Text('Notes')
-    image= fields.Binary('Image')
+    notes= fields.Text('Registration Notes')
+    image= fields.Binary('Image', attachment=True)
     name = fields.Char(string='Test')
     name_seq = fields.Char(string='Patient ID', reuired=True, copy=False, readonly=True,
                            index=True, default=lambda self: _("New"))
+    gender = fields.Selection([
+        ('male','Male'),
+        ('female', 'Female'),
+        ('transg', 'Trans Gender'),
+    ],default='male',string='Gender')
     @api.model
     def create(self, vals):
         if vals.get('name_seq', _('New')) == _('New'):
