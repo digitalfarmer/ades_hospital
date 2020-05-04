@@ -6,6 +6,15 @@ class HospitalPatient(models.Model):
     _description = 'patient record'
     _rec_name = 'name_seq'
 
+    @api.depends('patient_age')
+    def set_age_group(self):
+        for rec in self:
+            if rec.patient_age:
+                if rec.patient_age<25:
+                    rec.age_group = 'minor'
+                else:
+                    rec.age_group= 'mayor'
+
     patient_name= fields.Char('Pstient Name', reuired=True)
     patient_age= fields.Integer('Age')
     notes= fields.Text('Registration Notes')
@@ -18,6 +27,10 @@ class HospitalPatient(models.Model):
         ('female', 'Female'),
         ('transg', 'Trans Gender'),
     ],default='male',string='Gender')
+    age_group= fields.Selection([
+        ('mayor','Mayor'),
+        ('minor', 'Minor')
+    ], string='Age Group', compute='set_age_group')
     @api.model
     def create(self, vals):
         if vals.get('name_seq', _('New')) == _('New'):
