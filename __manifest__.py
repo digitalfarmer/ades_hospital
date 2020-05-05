@@ -11,6 +11,7 @@
     'depends': ['base','mail','stock'],
     'data':[
         'views/patient_view.xml',
+        'views/appointment.xml',
         'security/ir.model.access.csv',
         'data/sequence.xml',
     ],
