@@ -22,13 +22,33 @@ class HospitalPatient(models.Model):
                 else:
                     rec.age_group= 'mayor'
 
+    @api.multi
+    def open_patient_appointments(self):
+        return {
+            'name':_('Appointments'),
+            'domain':[('patient_id','=', self.id)],
+            'view_type': 'form',
+            'res_model':'hospital.appointment',
+            'view_id': False,
+            'view_mode': 'tree,form',
+            'type':'ir.actions.act_window'
+        }
+
+    def get_appointment_count(self):
+        count = self.env['hospital.appointment'].search_count([('patient_id','=', self.id)])
+        self.appointment_count = count
+
+    def _get_default_note(self):
+        return "Pastikan Data di Isi dengan lengkap"
+
     patient_name= fields.Char('Pstient Name', reuired=True)
     patient_age= fields.Integer('Age', track_visibility='always')
-    notes= fields.Text('Registration Notes')
+    notes= fields.Text('Registration Notes', default=_get_default_note)
     image= fields.Binary('Image', attachment=True)
     name = fields.Char(string='Test')
     name_seq = fields.Char(string='Patient ID', reuired=True, copy=False, readonly=True,
                            index=True, default=lambda self: _("New"))
+    appointment_count = fields.Integer('Appointment', copute='get_appointment_count')
     gender = fields.Selection([
         ('male','Male'),
         ('female', 'Female'),
