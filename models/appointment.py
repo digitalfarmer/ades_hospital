@@ -7,6 +7,14 @@ class HospitalAppointment(models.Model):
     _inherit = ['mail.thread','mail.activity.mixin']
     _order = 'id desc'
 
+    def action_state_confirm(self):
+        for rec in self:
+            rec.state= 'confirm'
+
+    def action_state_done(self):
+        for rec in self:
+            rec.state= 'done'
+
     @api.model
     def create(self, vals):
         if vals.get('name', _('New')) == _('New'):
