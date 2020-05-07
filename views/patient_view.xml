@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+<!--    action for smart button-->
+    <record id="open_patient_appointments" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 <!--    odoo hospytal patient search-->
     <record id="hospital_patient_search" model="ir.ui.view">
        <field name="name">hospital.patient.search</field>
@@ -41,10 +48,17 @@
             <form string="Patients">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
+<!--                        smart buttom type object-->
                         <button name="open_patient_appointments" type="object"
                                 class="oe_stat_button" icon="fa-calendar">
                             <field name="appointment_count" string="Appointments" widget="statinfo"/>
                         </button>
+<!--smart button type actions-->
+                          <button name="%(open_patient_appointments)d" type="action"
+                                class="oe_stat_button" icon="fa-home">
+                            <field name="appointment_count" string="Appointments" widget="statinfo"/>
+                        </button>
+
                     </div>
                     <div class="oe_title">
                         <h1>
