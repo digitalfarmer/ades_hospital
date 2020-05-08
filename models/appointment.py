@@ -28,6 +28,8 @@ class HospitalAppointment(models.Model):
     patient_age= fields.Integer('Age' , related='patient_id.patient_age')
     notes= fields.Text('Registration Note')
     appointment_date= fields.Date('Date', required=True)
+    doctor_note = fields.Text('Note')
+    pharmacy_note = fields.Text('Note')
     state = fields.Selection([
             ('draft','Draft'),
             ('confirm', 'Confirm'),

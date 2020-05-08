@@ -46,6 +46,18 @@
                     <group>
                         <field name="notes"/>
                     </group>
+                    <notebook>
+                        <page string="Doctor Prescription">
+                            <group>
+                            <field name="doctor_note"/>
+                            </group>
+                        </page>
+                        <page string="Pharmacy">
+                            <group>
+                            <field name="pharmacy_note"/>
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
 <!--                activity chatter-->
                 <div class="oe_chatter">
