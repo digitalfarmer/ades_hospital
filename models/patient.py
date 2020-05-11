@@ -49,6 +49,8 @@ class HospitalPatient(models.Model):
     name_seq = fields.Char(string='Patient ID', reuired=True, copy=False, readonly=True,
                            index=True, default=lambda self: _("New"))
     appointment_count = fields.Integer('Appointment', copute='get_appointment_count')
+    active= fields.Boolean("Active", default=True)
+
     gender = fields.Selection([
         ('male','Male'),
         ('female', 'Female'),
