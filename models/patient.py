@@ -45,12 +45,12 @@ class HospitalPatient(models.Model):
     patient_age= fields.Integer('Age', track_visibility='always')
     notes= fields.Text('Registration Notes', default=_get_default_note)
     image= fields.Binary('Image', attachment=True)
-    name = fields.Char(string='Test')
+    contact_number = fields.Char(string='Contact Number')
     name_seq = fields.Char(string='Patient ID', reuired=True, copy=False, readonly=True,
                            index=True, default=lambda self: _("New"))
     appointment_count = fields.Integer('Appointment', copute='get_appointment_count')
     active= fields.Boolean("Active", default=True)
-
+    doctor_id=fields.Many2one('hospital.doctor', string='Doctor')
     gender = fields.Selection([
         ('male','Male'),
         ('female', 'Female'),

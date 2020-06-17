@@ -15,7 +15,7 @@
        <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <search string="Search Patient">
-                <field name="name" string="string" domain="['|',('patient_name','ilike',self),('name_seq','ilike',self)]"/>
+                <field name="contact_number" string="string" domain="['|',('patient_name','ilike',self),('name_seq','ilike',self)]"/>
                 <field name="name_seq"/>
                 <field name="patient_name"/>
                 <separator/>
@@ -75,7 +75,8 @@
                     <group>
                         <group>
                             <field name="patient_name"/>
-                            <field name="name"/>
+                            <field name="contact_number"/>
+                            <field name="doctor_id"/>
 
                         </group>
                         <group>

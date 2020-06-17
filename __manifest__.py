@@ -12,7 +12,9 @@
     'data':[
         'views/patient_view.xml',
         'views/appointment.xml',
+        'views/doctor.xml',
         'security/ir.model.access.csv',
+        'security/security.xml',
         'data/sequence.xml',
         'reports/patient_card.xml',
         'reports/report.xml',

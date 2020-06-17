@@ -24,6 +24,8 @@ class HospitalAppointment(models.Model):
 
     name= fields.Char('Appointment ID', required=True, copy=False, readOnly=True, index=True, default=lambda self: _('New'))
     patient_id= fields.Many2one('hospital.patient', string='Patient ID', required=True)
+    doctor_id=fields.Many2one('hospital.doctor', string='Doctor')
+    #doctor_ids=fields.Many2many('hospital.doctor', 'hospital_patient_rel', 'appointment_id', 'doctor_id_rec',string='Doctor')
     patient_name= fields.Char('Patient Name',related='patient_id.patient_name')
     patient_age= fields.Integer('Age' , related='patient_id.patient_age')
     notes= fields.Text('Registration Note')

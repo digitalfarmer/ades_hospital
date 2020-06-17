@@ -35,12 +35,15 @@
                     </div>
                     <group>
                         <group>
-                            <field name="patient_id"/>
+                            <field name="patient_id" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="doctor_id" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+<!--                            <field name="doctor_ids" widget="many2many_tags"/>-->
+
                             <field name="patient_name"/>
-                            <field name="patient_age"/>
                         </group>
                         <group>
                             <field name="appointment_date"/>
+                            <field name="patient_age"/>
                         </group>
                     </group>
                     <group>
