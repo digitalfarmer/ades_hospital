@@ -48,6 +48,10 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form string="Patients">
+                <header>
+                    <button name="%(om_hospital.create_appointment_wizard)d" string="Create Appointment" type="action"
+                            class="oe_highlight" />
+                </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
 <!--                        smart buttom type object-->
@@ -115,4 +119,5 @@
 <!--    menu item-->
     <menuitem id="hospital_root" name="Hospital" sequence="0" web_icon="om_hospital,static/description/icon.png"/>
     <menuitem id="hospital_patient" name="Patients" parent="hospital_root" action="action_patient"/>
+<!--    <menuitem id="hospital_patient" name="Create Appointment" parent="hospital_root" action="action_patient"/>-->
 </odoo>
