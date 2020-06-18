@@ -76,7 +76,7 @@
                         <group>
                             <field name="patient_name"/>
                             <field name="contact_number"/>
-                            <field name="doctor_id"/>
+                            <field name="doctor_id" options="{'no_create_edit':True, 'no_create':True, 'no_open':True}" />
 
                         </group>
                         <group>
