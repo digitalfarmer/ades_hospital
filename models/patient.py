@@ -51,6 +51,11 @@ class HospitalPatient(models.Model):
             if rec.doctor_id:
                 rec.doctor_gender = rec.doctor_id.gender
 
+    def action_send_card(self):
+        template_id = self.env.ref('om_hospital.patient_card_email_template').id
+        template = self.env['mail.template'].browse(template_id)
+        template.send_mail(self.id, force_send=True)
+
     def _get_default_note(self):
         return "Pastikan Data di Isi dengan lengkap"
 
@@ -86,3 +91,5 @@ class HospitalPatient(models.Model):
             vals['name_seq'] = self.env['ir.sequence'].next_by_code('hospital.patient.sequence') or _('New')
         result = super(HospitalPatient, self).create(vals)
         return result
+
+

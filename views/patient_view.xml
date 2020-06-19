@@ -62,6 +62,7 @@
                 <header>
                     <button name="%(om_hospital.create_appointment_wizard)d" string="Create Appointment" type="action"
                             class="oe_highlight" context="{'default_patient_id':active_id}"  />
+                    <button name="action_send_card" type="object" string="Send Email" class="oe_highlight"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">

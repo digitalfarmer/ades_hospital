@@ -14,6 +14,6 @@ class HospitalDoctor(models.Model):
     #appointment_ids = fields.Many2many('hospital.appointment', 'hospital_patient_rel', 'doctor_id_rec', 'appointment_id', string='Appointment')
 
     @api.multi
-    def send_notif_telegram(self, bot_message):
-       pass
+    def send_notif_telegram(self):
+       print('aku pulang')
 
