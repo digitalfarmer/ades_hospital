@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <!--open appointment from action menu-->
+    <record id="action_patient_appointment" model="ir.actions.act_window">
+        <field name="name">Appointment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_type">form</field>
+        <field name="domain">[('patient_id', '=', active_id)]</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="om_hospital.appointment_tree" />
+        <field name="binding_model_id" ref="model_hospital_patient"/>
+    </record>
 <!--    action for smart button-->
     <record id="open_patient_appointments" model="ir.actions.act_window">
         <field name="name">Appointments</field>
