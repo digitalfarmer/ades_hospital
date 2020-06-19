@@ -92,7 +92,7 @@
                     <group>
                         <group>
                             <field name="patient_name"/>
-                            <field name="contact_number"/>
+                            <field name="contact_number" groups="om_hospital.group_hospital_manager" />
                             <field name="doctor_id" options="{'no_create_edit':True, 'no_create':True, 'no_open':True}" />
                             <field name="doctor_gender" />
                             <field name="user_id"/>
