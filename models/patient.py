@@ -38,6 +38,12 @@ class HospitalPatient(models.Model):
         count = self.env['hospital.appointment'].search_count([('patient_id','=', self.id)])
         self.appointment_count = count
 
+    @api.onchange('doctor_id')
+    def set_doctor_gender(self):
+        for rec in self:
+            if rec.doctor_id:
+                rec.doctor_gender = rec.doctor_id.gender
+
     def _get_default_note(self):
         return "Pastikan Data di Isi dengan lengkap"
 
@@ -51,6 +57,11 @@ class HospitalPatient(models.Model):
     appointment_count = fields.Integer('Appointment', copute='get_appointment_count')
     active= fields.Boolean("Active", default=True)
     doctor_id=fields.Many2one('hospital.doctor', string='Doctor')
+    doctor_gender = fields.Selection([
+        ('male','Male'),
+        ('female','Female'),
+        ('trans','Trans Gender'),
+    ], string='Doctor Gender', default='male')
     gender = fields.Selection([
         ('male','Male'),
         ('female', 'Female'),
