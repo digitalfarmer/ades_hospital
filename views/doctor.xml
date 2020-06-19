@@ -20,6 +20,11 @@
         <field name="arch" type="xml">
             <form string="Doctors">
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" string="Sent Notif" name="send_notif_telegram" type="object" icon="fa-send">
+
+                        </button>
+                    </div>
                     <group>
                         <group>
                             <field name="name"/>

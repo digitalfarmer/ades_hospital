@@ -16,6 +16,7 @@
         'wizards/create_appointment.xml',
         'security/ir.model.access.csv',
         'security/security.xml',
+        'data/mail_template.xml',
         'data/sequence.xml',
         'reports/patient_card.xml',
         'reports/report.xml',

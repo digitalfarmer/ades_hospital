@@ -81,9 +81,10 @@
                         </button>
 
                     </div>
+                    <field name="image" widget="image" class="oe_avatar"/>
                     <div class="oe_title">
                         <h1>
-                            <field name="image" widget="image" class="oe_avatar"/>
+
                             <field name="name_seq" readonly="1"/>
                         </h1>
                     </div>
@@ -93,11 +94,13 @@
                             <field name="contact_number"/>
                             <field name="doctor_id" options="{'no_create_edit':True, 'no_create':True, 'no_open':True}" />
                             <field name="doctor_gender" />
+                            <field name="user_id"/>
 
                         </group>
                         <group>
                             <field name="patient_age"/>
                             <field name="gender"/>
+                            <field name="email_id"/>
                             <field name="age_group"/>
                         </group>
                     </group>
