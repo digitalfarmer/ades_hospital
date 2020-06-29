@@ -4,7 +4,7 @@ class CreateAppointment(models.TransientModel):
     _name = 'create.appointment'
 
     patient_id= fields.Many2one('hospital.patient',string='Patient')
-    appointment_date=fields.Date()
+    appointment_date=fields.Date('Appointment Date')
 
 
     def create_appointment(self):

@@ -2,12 +2,20 @@
 <odoo>
     <!-- QWeb Reports -->
     <!-- NAME & FILE_NAME should be the same -->
+<!--            <report-->
+<!--                id="report_patient_card"-->
+<!--                model="hospital.patient"-->
+<!--                report_type="qweb-pdf"-->
+<!--                string="Patient Card"-->
+<!--                name="om_hospital.report_patient"-->
+<!--                file="om_hospital.report_patient"-->
+<!--            />-->
             <report
-                id="report_patient_card"
+                id="report_patient_card_xls"
+                string="Patient Card Excel"
                 model="hospital.patient"
-                report_type="qweb-pdf"
-                string="Patient Card"
-                name="om_hospital.report_patient"
-                file="om_hospital.report_patient"
+                report_type="xlsx"
+                name="om_hospital.report_patient_xls"
+                file="om_hospital.report_patient_xls"
             />
 </odoo>
