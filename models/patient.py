@@ -59,7 +59,7 @@ class HospitalPatient(models.Model):
     def _get_default_note(self):
         return "Pastikan Data di Isi dengan lengkap"
 
-    patient_name= fields.Char('Pstient Name', reuired=True)
+    patient_name= fields.Char('Pstient Name', reuired=True,track_visibility='always')
     patient_age= fields.Integer('Age', track_visibility='always')
     notes= fields.Text('Registration Notes', default=_get_default_note)
     image= fields.Binary('Image', attachment=True)
@@ -85,6 +85,16 @@ class HospitalPatient(models.Model):
         ('mayor','Mayor'),
         ('minor', 'Minor')
     ], string='Age Group', compute='set_age_group')
+    patient_name_upper = fields.Char(compute="_compute_upper_name",inverse="_inverse_upper_name")
+
+    @api.depends('patient_name')
+    def _compute_upper_name(self):
+        for rec in self:
+            rec.patient_name_upper = rec.patient_name.upper() if rec.patient_name else False
+    def _inverse_upper_name(self):
+        for rec in self:
+            rec.patient_name = rec.patient_name_upper.lower() if rec.patient_name_upper else False
+
     @api.model
     def create(self, vals):
         if vals.get('name_seq', _('New')) == _('New'):
