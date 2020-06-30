@@ -30,7 +30,7 @@ class CreateAppointment(models.TransientModel):
     def get_data(self):
         # print("Get Data Function")
         #appointment =self.env['hospital.appointment'].search([])
-        appointment = self.env['hospital.appointment'].search([('patient_id','=',1)])
+        appointment = self.env['hospital.appointment'].search([('patient_id','=', 1)])
         print(appointment)
         for rec in appointment:
             print("Appointment Name", rec.name, "Patient ID", rec.patient_id.id)

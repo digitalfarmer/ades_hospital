@@ -21,6 +21,13 @@ class HospitalAppointment(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment.sequence') or _('New')
         result= super(HospitalAppointment, self).create(vals)
         return result
+    # overite write function odoo
+    @api.multi
+    def write(self, vals):
+        res = super(HospitalAppointment, self).write(vals)
+        print("Test Write Function")
+        return res
+
 
     name= fields.Char('Appointment ID', required=True, copy=False, readOnly=True, index=True, default=lambda self: _('New'))
     patient_id= fields.Many2one('hospital.patient', string='Patient ID', required=True)
