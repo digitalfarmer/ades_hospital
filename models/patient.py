@@ -7,6 +7,11 @@ class HospitalPatient(models.Model):
     _description = 'patient record'
     _rec_name = 'name_seq'
 
+    @api.model
+    def test_cron_job(self):
+        print("TEst Cron")
+        #code here
+
     @api.multi
     def name_get(self):
         res =[]
