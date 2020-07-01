@@ -13,6 +13,7 @@
         'views/patient_view.xml',
         'views/appointment.xml',
         'views/doctor.xml',
+        'views/lab.xml',
         'wizards/create_appointment.xml',
         'security/ir.model.access.csv',
         'security/security.xml',
