@@ -25,7 +25,7 @@
                             <field name="name"/>
                         </group>
                         <group>
-                            <field name="user_id"/>
+                            <field name="user_id" group="om_hospital.group_hospital_lab_manager"/>
                         </group>
                     </group>
                 </sheet>
