@@ -15,6 +15,11 @@ class HospitalAppointment(models.Model):
         for rec in self:
             rec.state= 'done'
 
+    def delete_lines(self):
+        for rec in self:
+            print('rec', rec)
+            rec.appointment_lines = [(5,0,0)]
+
     @api.model
     def create(self, vals):
         if vals.get('name', _('New')) == _('New'):
